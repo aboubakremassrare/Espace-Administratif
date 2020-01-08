@@ -1,0 +1,92 @@
+<div class="global" >
+<app-identifiant></app-identifiant>
+    <div class=" container block-body">
+       <div class="card " style="background-color: #fff;">
+           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                    <div class="card-header" >
+                                    <h5>Edition des conges </h5>
+                                    </div>
+                                    <div class="card-body text-center">
+                                    <h5 class="card-title"><i class="fa fa-building" style="padding-right:10px"></i>Département</h5>
+                                    <br>
+                                    <select 
+                                    [(ngModel)]="typeDepartement" 
+                                    formControlName="departement" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.departement.errors }" 
+                                    (ngModelChange)="updateSelectedValue($event)" 
+                                    class="form-control ng-pristine ng-valid ng-touched" 
+                                    style="min-width: 200px;" 
+                                    name="attestation-salaire">
+                                    <option  value="">Selectionner une departement
+                                    </option>
+                                    <option *ngFor="let departement of depts"
+                                    style="text-align: center;"
+                                    [value]="departement.id">{{departement.departement_name}}
+                                    </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.departement.errors" class="invalid-feedback">
+                                    <div *ngIf="f.departement.errors.required">Departement  is required</div>
+                                    </div>
+                                    <br>
+                                    <div *ngIf="panelVisible" >
+                                    <h5 class="card-title"><i class="fa fa-user" style="padding-right:10px"></i>Interime</h5>
+                                    <br>
+                                    <select [(ngModel)]="typeInterime" 
+                                    formControlName="interime" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.interime.errors }" 
+                                    (ngModelChange)="updateSelectedValueInterim($event)"  
+                                    class="form-control ng-pristine ng-valid ng-touched"
+                                    style="min-width: 200px;"
+                                    name="attestation-salaire"
+                                    >
+                                    <option value="">Selectionner un interime
+                                    </option>
+                                    <option *ngFor="let interime of Interimes_clone"
+                                    [value]="interime.id">{{interime.Interime_name}}
+                                    </option>
+                                    </select>
+                                    <div *ngIf="submitted && f.interime.errors" class="invalid-feedback">
+                                    <div *ngIf="f.interime.errors.required">Interime  is required</div>
+                                    </div>
+                                    </div>
+                                    <br>
+                                    <div *ngIf="panelVisibleDate" >
+                                    <h5 class="card-title"><i class="fa fa-calendar" style="padding-right:10px"></i>Date</h5>
+                                    <br>
+                                    <div class="row">
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                    <label><b>Date de debut</b></label>
+                                    <input style="text-align: center;" type="text"
+                                    placeholder="Debut"
+                                    formControlName="mytimestart" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.mytimestart.errors }" 
+                                    [(ngModel)]="mytimestart"
+                                    class="form-control"
+                                    bsDatepicker>
+                                    </div>
+                                    <div class="col-xs-12 col-12 col-md-6 form-group">
+                                    <label><b>Date de fin</b></label>
+                                    <input style="text-align: center;" type="text"
+                                    formControlName="mytimeend" 
+                                    [ngClass]="{ 'is-invalid': submitted && (f.mytimeend.errors||registerForm.errors) }"
+                                    placeholder="Fin"
+                                    useValueAsDate
+                                    [(ngModel)]="mytimeend"
+                                    class="form-control"
+                                    bsDatepicker>
+                                    <div *ngIf="registerForm.errors" class="invalid-feedback">
+                                        Date de fin must be greater then Date de debut
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="spinner-block">
+                                    <button class="btn btn-valider"><b>Valider</b></button>
+                                    </div>
+                                    </div>
+                                    <div class="card-footer text-muted">
+                                    </div>
+            </form>
+        </div>
+    </div>
+</div>

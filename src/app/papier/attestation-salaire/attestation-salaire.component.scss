@@ -1,0 +1,42 @@
+
+.block-body{
+  margin-top: 60px;
+  padding: 15px;
+  color:black;
+ 
+}
+.spinner-block{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+.btn-valider{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20px;
+  margin-top: 20px;
+  background: #1d4584;;
+  text-align: center;
+  height:40px;
+  color: white;
+  border-radius: 15px;
+   &:hover, &.active{
+      background: #86fcff;
+      color: #333;
+}
+}
+
+
+
+@media (max-width: 700px) {
+
+  .block-body{
+      width: 90%;
+      font-size: 12px;
+      padding: 20px 20px;
+
+  }
+  
+}

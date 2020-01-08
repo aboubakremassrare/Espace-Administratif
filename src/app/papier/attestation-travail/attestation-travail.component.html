@@ -1,0 +1,47 @@
+<div class="global" >
+<app-identifiant></app-identifiant>
+    <div class=" container block-body">
+        <div class="card " style="background-color: #fff;">
+            <div *ngIf="success" class="alert alert-success" role="alert">
+                Demande Attestation send avec success!
+            </div>
+            <div *ngIf="failed" class="alert alert-danger" role="alert">
+                Demande Attestation failed!
+            </div>
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <div class="card-header" >
+                    <h5>Edition des attestations </h5>
+                    </div>
+                    <div class="card-body text-center">
+                    <h5 class="card-title">Attestation de travail</h5>
+                    <br>
+                    <select 
+                    formControlName="select" 
+                    [ngClass]="{ 'is-invalid': submitted && f.select.errors }"  
+                    class="form-control ng-pristine ng-valid ng-touched"
+                    [(ngModel)]="selectedOption"
+                    style="min-width: 200px;" 
+                    name="attestation-salaire"
+                    style="min-width: 200px;">
+                    <option  value="">Type d'attestation</option>
+                    <option  value="2" selected>Attestation de déclaration de travail</option>
+                    </select>
+                    <div *ngIf="submitted && f.select.errors" class="invalid-feedback">
+                        <div *ngIf="f.select.errors.required">Attestation de travail  is required</div>
+                    </div>
+                    <br>
+                    <div class="spinner-block">
+                        <button class="btn btn-valider" [disabled]="disabled" >
+                            <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
+                                <span class="sr-only">Loading...</span>
+                            </div>
+                            <b>Valider</b>
+                        </button>
+                    </div>
+                    </div>
+                    <div class="card-footer text-muted">
+                    </div>
+            </form>
+       </div>
+   </div>
+</div>

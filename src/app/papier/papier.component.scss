@@ -1,0 +1,68 @@
+.globalcontainer{
+  margin-bottom: 50px;
+}
+.container{
+    width: 80%;
+  }
+  .fakeimg {
+    height: 200px;
+    background: #aaa;
+  }
+
+  .box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    width: 100%;
+    min-height: 200px;
+    color: #fff;
+    }
+div.globalbox{
+    padding-top: 15px ;
+}
+
+ .divboxing{
+    
+     background-size: 100% 100%;
+      background-repeat: no-repeat;
+ }
+
+ .boxheader{
+     background: #1d4584;;
+     text-align: center;
+     height:40px;
+
+     &:hover, &.active{
+        background: #86fcff;
+        color: #333;
+  }
+    
+ }
+ .boxheader> span{
+    color:#86fcff;
+    font-family: cursive,fantasy;
+    cursor:pointer;
+    
+ }
+
+ .boxheader> span> a{
+    color: white;
+    text-decoration: none;
+    padding: 20px 20px;
+    font-size:15px;
+   
+    }
+
+    @media (max-width: 1400px) {
+        .boxheader> span> a{
+            color: white;
+            text-decoration: none;
+            padding: 20px 20px;
+            font-size:10px;
+           
+            }
+      }
+ 
+
+ 
