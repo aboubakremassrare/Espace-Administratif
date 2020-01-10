@@ -15,6 +15,10 @@ class Demandes extends \Restserver\Libraries\REST_Controller
         $this->load->model('attestation_model', 'AttestationModel');
         $this->load->model('avance_model', 'AvanceModel');
         $this->load->model('autorisation_model', 'AutorisationModel');
+        $this->load->model('departement_model', 'DepartementModel');
+        $this->load->model('interime_model', 'InterimeModel');
+        $this->load->model('conge_model', 'CongeModel');
+
 
 
     }
@@ -122,6 +126,41 @@ class Demandes extends \Restserver\Libraries\REST_Controller
         }
     }
 
+
+        
+            /**
+     * Conge Data API
+     * --------------------
+     * @param: user_id departement interime date
+   
+     * --------------------------
+     * @method : POST
+     * @link: api/demandes/conge
+     */
+
+    public function conge_post()
+    {
+        $formdata = json_decode(file_get_contents('php://input'));
+        $isValidToken = $this->UserModel->checkToken($this->input->post('token'));
+        /* Si le token est valide */
+        if($isValidToken) {
+            $conge=array();
+            $conge['user_id'] = $this->input->post('user_id');
+            $conge['departement_id'] = $this->input->post('departement');
+            $conge['interime_id'] = $this->input->post('interime');
+            $conge['date_debut'] = $this->input->post('datedebut');
+            $conge['date_fin'] = $this->input->post('datefin');
+            $last_id=$this->CongeModel->ajouter_conge($conge);
+                          }//end isvalid token
+        else{
+            $message = [
+                'status' => FALSE,
+                'message' => "Invalid Token"
+            ];
+            $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+        }
+    }
+
         public function sendmail_post(){
 
                 $formdata = json_decode(file_get_contents('php://input'));
@@ -217,6 +256,44 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                         </table> 
                                     </body> 
                                     </html>';
+                        break;
+                        case 'CONGE':
+                            $idDepartement=$this->input->post('departement');
+                            $departement_query=$this->DepartementModel->departementdetailById($idDepartement);
+                            $idInterime=$this->input->post('interime');
+                            $interime_query=$this->InterimeModel->interimedetailById($idInterime);
+                            $datedebut=$this->input->post('datedebut');
+                            $datefin=$this->input->post('datefin');
+                            $htmlContent = '
+                                    <html> 
+                                    <head> 
+                                        <title>Welcome to ADm</title> 
+                                    </head> 
+                                    <body> 
+                                        <h1>Espace Administratif</h1> 
+                                        <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                            <tr> 
+                                                <th>Name:</th><td>'.$utilisateur_query->Nom.'--'.$utilisateur_query->Prenom.'</td> 
+                                            </tr> 
+                                            <tr style="background-color: #e0e0e0;"> 
+                                                <th>Email:</th><td>'.$utilisateur_query->email.'</td> 
+                                            </tr> 
+                                            <tr> 
+                                                <th>Demande:</th><td><a href="">'.$subject.'</a></td> 
+                                            </tr> 
+                                            <tr> 
+                                            <th>Departemnt :</th><td><a href="">'.$departement_query->departement_name.' </a></td> 
+                                            </tr>
+                                            <tr> 
+                                            <th>Interime :</th><td><a href="">'.$interime_query->Interime_name.' </a></td> 
+                                            </tr>
+                                            <tr> 
+                                            <th>Periode:</th><td>'.$datedebut.'-----'.$datefin.'</td> 
+                                            </tr>
+                                        </table> 
+                                    </body> 
+                                    </html>';
+
                         break;
                     }
                     $headers = "MIME-Version: 1.0" . "\r\n"; 

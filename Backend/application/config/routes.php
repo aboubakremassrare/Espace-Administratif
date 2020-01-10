@@ -16,6 +16,7 @@ $route['api/interime/interimes'] = 'api/interimes/interimes';
 $route['api/demandes/attestation'] = 'api/demandes/attestation';
 $route['api/demandes/avance'] = 'api/demandes/avance';
 $route['api/demandes/autorisation'] = 'api/demandes/autorisation';
+$route['api/demandes/conge'] = 'api/demandes/conge';
 
 
 //$route['api/user/user']='api/user/userData';

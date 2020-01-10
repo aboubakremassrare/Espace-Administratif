@@ -6,7 +6,7 @@ class Autorisation_Model extends CI_Model
 
     /**
      * 
-     * ajouter un avance
+     * ajouter un autorisation
      */
     public function ajouter_autorisation($data)
     {

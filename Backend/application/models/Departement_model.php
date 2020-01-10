@@ -16,6 +16,19 @@ class Departement_Model extends CI_Model
       
     }
 
+        /**
+     * Departement by id
+     * ----------------------------------
+     */
+    public function departementdetailById($idDepartement)
+    {
+        $this->db->where('actif',1);
+        $this->db->where('id',$idDepartement);
+        $departement= $this->db->get($this->dept_table);
+        return $departement->row();
+      
+    }
+
 
     
 }

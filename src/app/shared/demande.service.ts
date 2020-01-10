@@ -33,6 +33,13 @@ export class DemandeService {
       catchError(this.handleError)
     );
   }
+  createDemandeConge(form) {
+    return this.http.post<any>(this.serverUrl + 'api/demandes/conge', form)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
 
   sendmail(form){
     return this.http.post<any>(this.serverUrl + 'api/demandes/sendmail', form)

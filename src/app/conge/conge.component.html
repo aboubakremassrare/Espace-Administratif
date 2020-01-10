@@ -2,6 +2,12 @@
 <app-identifiant></app-identifiant>
     <div class=" container block-body">
        <div class="card " style="background-color: #fff;">
+                <div *ngIf="success" class="alert alert-success" role="alert">
+                    Demande CONGE send avec success!
+                </div>
+                <div *ngIf="failed" class="alert alert-danger" role="alert">
+                    Demande CONGE failed!
+                </div>
            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                                     <div class="card-header" >
                                     <h5>Edition des conges </h5>
@@ -81,7 +87,12 @@
                                     </div>
                                     </div>
                                     <div class="spinner-block">
-                                    <button class="btn btn-valider"><b>Valider</b></button>
+                                        <button class="btn btn-valider" [disabled]="disabled" >
+                                            <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                            <b>Valider</b>
+                                        </button>
                                     </div>
                                     </div>
                                     <div class="card-footer text-muted">

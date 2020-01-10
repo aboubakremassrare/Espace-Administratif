@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DemandeService } from '../shared/demande.service';
 import { CongeService } from '../shared/conge.service';
 import { Departement } from '../shared/Departement.model';
 import { Interime } from '../shared/Interime.model';
@@ -32,12 +33,13 @@ export class CongeComponent implements OnInit {
   Interimes_clone:Interime;
   error: {};
   token:string;
+  demandeForm: FormGroup;
   success: boolean=false;
   failed: boolean=false;
   disabled: boolean=false;
   
 
-  constructor(private datePipe: DatePipe,private formBuilder: FormBuilder,private Congeservice:CongeService) { }
+  constructor(private datePipe: DatePipe,private formBuilder: FormBuilder,private Congeservice:CongeService,private demandeservice:DemandeService) { }
 
   ngOnInit() {
 
@@ -86,18 +88,45 @@ export class CongeComponent implements OnInit {
 
   /*submitter le formulaire du template */
   onSubmit() {
-    this.submitted = true;
-    
-    // stop here if form is invalid
-    if(this.registerForm.invalid){
-    
+      this.submitted = true;
+      this.disabled = true;
+      // stop here if form is invalid
+      if(this.registerForm.invalid){
+      this.disabled = false;
         return;
-    }else{
+      }else{
       this.starttime=this.datePipe.transform(this.mytimestart,"dd-MM-yyyy");
       this.endtime=this.datePipe.transform(this.mytimeend,"dd-MM-yyyy");
-      
-      alert(this.typeDepartement+'-'+this.typeInterime+'-'+this.starttime+'-'+this.endtime)
-    }
+      const formData = new FormData();
+      formData.append('sujet', 'CONGE');
+      formData.append('departement', this.typeDepartement);
+      formData.append('interime', this.typeInterime);
+      formData.append('datedebut', this.starttime);
+      formData.append('datefin',''+this.endtime);
+      formData.append('user_id',localStorage.getItem('user_id'));
+      formData.append('token',localStorage.getItem('token'));
+      formData.append('typeDemande','CONGE');
+      this.demandeservice.sendmail(formData).subscribe(
+        res => {
+        },
+        error =>{
+          console.log(error);
+        } 
+      );
+      this.demandeservice.createDemandeConge(formData).subscribe(
+        res => {
+          this.success=true;
+          this.failed=false;  
+          this.disabled=false;
+        },
+        error =>{
+          console.log(error);
+          this.failed=true;
+          this.success=false;
+          this.disabled=false
+        } 
+      );
+          }
 }
 
   validerConge(){
