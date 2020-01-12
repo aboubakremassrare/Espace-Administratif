@@ -5,6 +5,7 @@ import { DemandeService } from '../shared/demande.service';
 import { CongeService } from '../shared/conge.service';
 import { Departement } from '../shared/Departement.model';
 import { Interime } from '../shared/Interime.model';
+import * as jsPDF from 'jspdf'
 
 
 
@@ -108,6 +109,11 @@ export class CongeComponent implements OnInit {
       formData.append('typeDemande','CONGE');
       this.demandeservice.sendmail(formData).subscribe(
         res => {
+          /*creer le pdf */
+          var conge = new jsPDF()
+          const htmlcontent='<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta http-equiv="X-UA-Compatible" content="ie=edge"><title>Document</title><style>table {border-collapse:collapse;width:90%;}th, td {border:1px solid black;width:20%;}td {text-align:center;}</style></head><body><h2 align="center">FORMULAIRE DE CONGE</h2><br><h5 style="float:left; border: 1px solid black; padding: 5px;">DEMANDE : Conge</h5><br><br><br><h5>Nom et Prénom :'+res.data.Nom+' '+res.data.Prenom +' &nbsp;&nbsp;</h5><p>Departement :'+res.data.Departement+' &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p><p>Sollicite l\'autorisation de s\'absenter :</p><p>  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Du :'+res.data.Datedebut+'</p><p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Au : '+res.data.Datefin+'</p><br><br><br><p>  Intérim :'+res.data.Interime+' </p><p style="float:right;">Date & Signature<br><br></p></body></html>';
+          conge.fromHTML(htmlcontent, 10, 10)
+          conge.save('conge.pdf')
         },
         error =>{
           console.log(error);
@@ -118,6 +124,7 @@ export class CongeComponent implements OnInit {
           this.success=true;
           this.failed=false;  
           this.disabled=false;
+   
         },
         error =>{
           console.log(error);
@@ -127,6 +134,9 @@ export class CongeComponent implements OnInit {
         } 
       );
           }
+
+
+          
 }
 
   validerConge(){

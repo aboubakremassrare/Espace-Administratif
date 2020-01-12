@@ -293,7 +293,20 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                         </table> 
                                     </body> 
                                     </html>';
-
+                                    $return_data = [
+                                        'Nom' => $utilisateur_query->Nom,
+                                        'Prenom' => $utilisateur_query->Prenom,
+                                        'Departement' =>$departement_query->departement_name,
+                                        'Interime' =>$interime_query->Interime_name,
+                                        'Datedebut' =>$datedebut,
+                                        'Datefin' =>$datefin,
+                                    ];
+                                    $message = [
+                                        'status' => true,
+                                        'data' => $return_data,
+                                        'message' => "Conge formulaire successful"
+                                    ];
+                                    $this->response($message, REST_Controller::HTTP_OK);
                         break;
                     }
                     $headers = "MIME-Version: 1.0" . "\r\n"; 
