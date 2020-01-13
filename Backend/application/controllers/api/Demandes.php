@@ -278,7 +278,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                                 <th>Demande:</th><td><a href="">'.$subject.'</a></td> 
                                             </tr> 
                                             <tr style="background-color: #e0e0e0;"> 
-                                            <th>jour :</th><td><a href="">'.$jour.' DH</a></td> 
+                                            <th>jour :</th><td><a href="">'.$jour.' </a></td> 
                                             </tr>
                                             <tr> 
                                             <th>Heure:</th><td>'.$heureDebut.'-----'.$heureFin.'</td> 
