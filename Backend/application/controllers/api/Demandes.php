@@ -144,13 +144,36 @@ class Demandes extends \Restserver\Libraries\REST_Controller
         $isValidToken = $this->UserModel->checkToken($this->input->post('token'));
         /* Si le token est valide */
         if($isValidToken) {
+
+            $utilisateur=$this->input->post('user_id');
+            $utilisateur_query=$this->UserModel->user_data($utilisateur);
+            $idDepartement=$this->input->post('departement');
+            $departement_query=$this->DepartementModel->departementdetailById($idDepartement);
+            $idInterime=$this->input->post('interime');
+            $interime_query=$this->InterimeModel->interimedetailById($idInterime);
+            $datedebut=$this->input->post('datedebut');
+            $datefin=$this->input->post('datefin');
             $conge=array();
-            $conge['user_id'] = $this->input->post('user_id');
-            $conge['departement_id'] = $this->input->post('departement');
-            $conge['interime_id'] = $this->input->post('interime');
-            $conge['date_debut'] = $this->input->post('datedebut');
-            $conge['date_fin'] = $this->input->post('datefin');
+            $conge['user_id'] = $utilisateur;
+            $conge['departement_id'] = $idDepartement;
+            $conge['interime_id'] = $idInterime;
+            $conge['date_debut'] = $datedebut;
+            $conge['date_fin'] = $datefin;
             $last_id=$this->CongeModel->ajouter_conge($conge);
+            $return_data = [
+                'Nom' => $utilisateur_query->Nom,
+                'Prenom' => $utilisateur_query->Prenom,
+                'Departement' =>$departement_query->departement_name,
+                'Interime' =>$interime_query->Interime_name,
+                'Datedebut' =>$datedebut,
+                'Datefin' =>$datefin,
+            ];
+            $message = [
+                'status' => true,
+                'data' => $return_data,
+                'message' => "Conge formulaire successful"
+            ];
+            $this->response($message, REST_Controller::HTTP_OK);
                           }//end isvalid token
         else{
             $message = [
@@ -182,8 +205,11 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                         <title>Welcome to ADm</title> 
                                     </head> 
                                     <body> 
-                                    <h1>Espace Administratif</h1> 
-                                        <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                    <h1>Espace Administratif</h1>
+                                    <table cellspacing="0" style=" width: 80%;"> 
+                                    <tr style="background: #1d4584;color:white">  
+                                    <th>Label</th><td>Information de la demande</td> 
+                                    </tr>  
                                             <tr> 
                                                 <th>Name:</th><td>'.$utilisateur_query->Nom.'--'.$utilisateur_query->Prenom.'</td> 
                                             </tr> 
@@ -205,7 +231,11 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                         <title>Welcome to ADm</title> 
                                     </head> 
                                     <body> 
-                                    <h1>Espace Administratif</h1>                                         <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                    <h1>Espace Administratif</h1>
+                                    <table cellspacing="0" style=" width: 80%;"> 
+                                    <tr style="background: #1d4584;color:white">  
+                                    <th>Label</th><td>Information de la demande</td> 
+                                    </tr> 
                                             <tr> 
                                                 <th>Name:</th><td>'.$utilisateur_query->Nom.'--'.$utilisateur_query->Prenom.'</td> 
                                             </tr> 
@@ -215,7 +245,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                             <tr> 
                                                 <th>Demande:</th><td><a href="">'.$subject.'</a></td> 
                                             </tr> 
-                                            <tr> 
+                                            <tr style="background-color: #e0e0e0;"> 
                                             <th>Montant :</th><td><a href="">'.$avance.' DH</a></td> 
                                             </tr>
                                         </table> 
@@ -234,7 +264,10 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                     </head> 
                                     <body> 
                                         <h1>Espace Administratif</h1> 
-                                        <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                        <table cellspacing="0" style=" width: 80%;"> 
+                                        <tr style="background: #1d4584;color:white">  
+                                        <th>Label</th><td>Information de la demande</td> 
+                                        </tr> 
                                             <tr> 
                                                 <th>Name:</th><td>'.$utilisateur_query->Nom.'--'.$utilisateur_query->Prenom.'</td> 
                                             </tr> 
@@ -244,13 +277,13 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                             <tr> 
                                                 <th>Demande:</th><td><a href="">'.$subject.'</a></td> 
                                             </tr> 
-                                            <tr> 
+                                            <tr style="background-color: #e0e0e0;"> 
                                             <th>jour :</th><td><a href="">'.$jour.' DH</a></td> 
                                             </tr>
                                             <tr> 
                                             <th>Heure:</th><td>'.$heureDebut.'-----'.$heureFin.'</td> 
                                             </tr>
-                                            <tr> 
+                                            <tr style="background-color: #e0e0e0;"> 
                                             <th>Motif :</th><td><a href="">'.$motif.' </a></td> 
                                             </tr>
                                         </table> 
@@ -271,7 +304,10 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                     </head> 
                                     <body> 
                                         <h1>Espace Administratif</h1> 
-                                        <table cellspacing="0" style="border: 2px dashed #FB4314; width: 100%;"> 
+                                        <table cellspacing="0" style=" width: 80%;"> 
+                                            <tr style="background: #1d4584;color:white">  
+                                            <th>Label</th><td>Information de la demande</td> 
+                                            </tr> 
                                             <tr> 
                                                 <th>Name:</th><td>'.$utilisateur_query->Nom.'--'.$utilisateur_query->Prenom.'</td> 
                                             </tr> 
@@ -281,32 +317,19 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                                             <tr> 
                                                 <th>Demande:</th><td><a href="">'.$subject.'</a></td> 
                                             </tr> 
-                                            <tr> 
+                                            <tr style="background-color: #e0e0e0;"> 
                                             <th>Departemnt :</th><td><a href="">'.$departement_query->departement_name.' </a></td> 
                                             </tr>
                                             <tr> 
                                             <th>Interime :</th><td><a href="">'.$interime_query->Interime_name.' </a></td> 
                                             </tr>
-                                            <tr> 
+                                            <tr style="background-color: #e0e0e0;"> 
                                             <th>Periode:</th><td>'.$datedebut.'-----'.$datefin.'</td> 
                                             </tr>
                                         </table> 
                                     </body> 
                                     </html>';
-                                    $return_data = [
-                                        'Nom' => $utilisateur_query->Nom,
-                                        'Prenom' => $utilisateur_query->Prenom,
-                                        'Departement' =>$departement_query->departement_name,
-                                        'Interime' =>$interime_query->Interime_name,
-                                        'Datedebut' =>$datedebut,
-                                        'Datefin' =>$datefin,
-                                    ];
-                                    $message = [
-                                        'status' => true,
-                                        'data' => $return_data,
-                                        'message' => "Conge formulaire successful"
-                                    ];
-                                    $this->response($message, REST_Controller::HTTP_OK);
+
                         break;
                     }
                     $headers = "MIME-Version: 1.0" . "\r\n"; 
