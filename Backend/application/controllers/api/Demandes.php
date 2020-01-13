@@ -199,10 +199,10 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                     $utilisateur_query=$this->UserModel->user_data($utilisateur);
                     switch($typeDemande){
                         case 'ATTESTATION':
-                            $htmlContent = ' 
+                            $htmlContent = '
                                     <html> 
                                     <head> 
-                                        <title>Welcome to ADm</title> 
+                                        <title>Welcome to ADM</title> 
                                     </head> 
                                     <body> 
                                     <h1>Espace Administratif</h1>
@@ -228,7 +228,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                             $htmlContent = ' 
                                     <html> 
                                     <head> 
-                                        <title>Welcome to ADm</title> 
+                                        <title>Welcome to ADM</title> 
                                     </head> 
                                     <body> 
                                     <h1>Espace Administratif</h1>
@@ -260,7 +260,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                             $htmlContent = '
                                     <html> 
                                     <head> 
-                                        <title>Welcome to ADm</title> 
+                                        <title>Welcome to ADM</title> 
                                     </head> 
                                     <body> 
                                         <h1>Espace Administratif</h1> 
@@ -300,7 +300,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                             $htmlContent = '
                                     <html> 
                                     <head> 
-                                        <title>Welcome to ADm</title> 
+                                        <title>Welcome to ADM</title> 
                                     </head> 
                                     <body> 
                                         <h1>Espace Administratif</h1> 
