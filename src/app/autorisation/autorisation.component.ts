@@ -62,7 +62,7 @@ export class AutorisationComponent implements OnInit {
     this.starttime=this.datePipe.transform(this.mytimestart,"HH:mm");
     this.endtime=this.datePipe.transform(this.mytimeend,"HH:mm");
     const formData = new FormData();
-    formData.append('sujet', 'Autorisation de sortie');
+    formData.append('sujet', 'AUTORISATION DE SORTIE');
     formData.append('jour', this.jourtime);
     formData.append('heureDebut', this.starttime);
     formData.append('heureFin', this.endtime);

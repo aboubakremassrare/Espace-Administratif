@@ -46,7 +46,7 @@ export class DomiciliationSalaireComponent implements OnInit {
     formData.append('token',localStorage.getItem('token'));
         //envoyer un mail
     const sendmailData = new FormData();
-    sendmailData.append('sujet', 'Domiciliation de Salaire');
+    sendmailData.append('sujet', 'DOMICILIATION DE SALAIRE');
     sendmailData.append('user_id',localStorage.getItem('user_id'));
     sendmailData.append('token',localStorage.getItem('token'));
     sendmailData.append('typeDemande','ATTESTATION');

@@ -38,7 +38,7 @@ export class AvanceComponent implements OnInit {
     this.disabled = true;
     this.submitted = true;
     const formData = new FormData();
-    formData.append('sujet', 'Demande D\'avance');
+    formData.append('sujet', 'DEMANDE D\'AVANCE');
     formData.append('user_id',localStorage.getItem('user_id'));
     formData.append('token',localStorage.getItem('token'));
     formData.append('typeDemande','AVANCE');

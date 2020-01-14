@@ -1,12 +1,10 @@
 import { HomeComponent } from './home/home.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
-
 import { PapierComponent } from './papier/papier.component';
 import { AttestationSalaireComponent } from './papier/attestation-salaire/attestation-salaire.component';
 import { AttestationTravailComponent } from './papier/attestation-travail/attestation-travail.component';
 import { DomiciliationSalaireComponent } from './papier/domiciliation-salaire/domiciliation-salaire.component';
 import { PapierVisaComponent } from './papier/papier-visa/papier-visa.component';
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CongeComponent } from './conge/conge.component';
