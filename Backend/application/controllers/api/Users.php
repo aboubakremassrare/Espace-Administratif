@@ -28,16 +28,24 @@ class Users extends \Restserver\Libraries\REST_Controller
      */
     public function register_post()
     {
-        $_POST = $this->security->xss_clean($_POST);
-        # Form Validation
-        $this->form_validation->set_rules('fullname', 'Full Name', 'trim|required|max_length[50]');
-        $this->form_validation->set_rules('username', 'Username', 'trim|required|is_unique[users.username]|alpha_numeric|max_length[20]',
+
+            $formdata = json_decode(file_get_contents('php://input'));
+            $insert_data['username'] = $this->input->post('username');;
+            $insert_data['password'] = md5($this->input->post('password'));
+            $insert_data['Nom'] = $this->input->post('Nom');;
+            $insert_data['Prenom'] = $this->input->post('Prenom');;
+            $insert_data['Immatriculation'] = $this->input->post('Immatriculation');;
+            $insert_data['Cin'] = $this->input->post('Cin');;
+            $insert_data['Naissance'] = $this->input->post('Naissance');;
+            $insert_data['email'] = $this->input->post('email');;
+
+
+        $this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[users.username]|alpha_numeric|max_length[20]',
             array('is_unique' => 'This %s already exists please enter another username')
         );
         $this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email|max_length[80]|is_unique[users.email]',
             array('is_unique' => 'This %s already exists please enter another email address')
         );
-        $this->form_validation->set_rules('password', 'Password', 'trim|required|max_length[100]');
         if ($this->form_validation->run() == FALSE)
         {
             // Form Validation Errors
@@ -51,15 +59,10 @@ class Users extends \Restserver\Libraries\REST_Controller
         }
         else
         {
-            $insert_data = [
-                'full_name' => $this->input->post('fullname', TRUE),
-                'email' => $this->input->post('email', TRUE),
-                'username' => $this->input->post('username', TRUE),
-                'password' => md5($this->input->post('password', TRUE)),
-                'created_at' => time(),
-                'updated_at' => time(),
-            ];
-
+            $this->load->library('Authorization_Token');
+                   
+            // Generate Token
+            $insert_data['token'] = $this->authorization_token->generateToken($insert_data);
             // Insert User in Database
             $output = $this->UserModel->insert_user($insert_data);
             if ($output > 0 AND !empty($output))
@@ -79,6 +82,7 @@ class Users extends \Restserver\Libraries\REST_Controller
                 ];
                 $this->response($message, REST_Controller::HTTP_NOT_FOUND);
             }
+        
         }
     }
 
