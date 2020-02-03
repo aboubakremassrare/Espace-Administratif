@@ -1,0 +1,140 @@
+<section>
+    <div class="container container-register">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-8 col-xl-6">
+            <div *ngIf="success" class="alert alert-success" role="alert">
+                Ajout Utilisateur send avec success!
+            </div>
+            <div *ngIf="failed" class="alert alert-danger" role="alert">
+                Ajout Utilisateur failed!
+            </div>
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+          <div class="row">
+            <div class="col text-center">
+                <label class="label-style" ><b>Inscription</b></label>
+            </div>
+          </div>
+        
+          <div class="row align-items-center mt-4">
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Nom"
+                formControlName="nom" 
+                [(ngModel)]="nom" 
+                >
+            </div>
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Prenom"
+                formControlName="prenom" 
+                [(ngModel)]="prenom" 
+                >
+            </div>
+          </div>
+
+          <div class="row align-items-center mt-4">
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Username"
+                formControlName="username" 
+                [(ngModel)]="username" 
+                >
+            </div>
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Password"
+                formControlName="password" 
+                [(ngModel)]="password" 
+                >
+            </div>
+          </div>
+
+          <div class="row align-items-center mt-4">
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Immatriculation"
+                formControlName="immatriculation" 
+                [(ngModel)]="immatriculation" 
+                >
+            </div>
+          </div>
+
+          <div class="row align-items-center mt-4">
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Cin"
+                formControlName="cin" 
+                [(ngModel)]="cin" 
+                >
+            </div>
+          </div>
+
+          <div class="row align-items-center mt-4">
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Email"
+                formControlName="email" 
+                [(ngModel)]="email" 
+                >
+            </div>
+          </div>
+
+          <div class="row align-items-center mt-4">
+            <div class="col">
+                <input
+                type="text"
+                class="form-control"
+                placeholder="Naissance"
+                formControlName="naissance" 
+                [(ngModel)]="naissance" 
+                bsDatepicker 
+                >
+            </div>
+          </div>
+
+   
+     
+          <div class="row justify-content-start mt-4">
+            <div class="col">
+               
+                    <div class="form-check">
+                      <label class="form-check-label">
+                        <input type="checkbox" 
+                        class="form-check-input" 
+                        formControlName="isadmin" 
+                         [(ngModel)]="isadmin" >
+                         Is Admin
+                      </label>
+                    </div>
+                    <div class="spinner-block">
+                      <button class="btn btn-valider" [disabled]="disabled" >
+                          <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
+                              <span class="sr-only">Loading...</span>
+                          </div>
+                          <b>Valider</b>
+                      </button>
+                    </div>
+                
+            </div>
+          </div>
+        </form>
+
+        </div>
+      </div>
+    </div>
+  </section>

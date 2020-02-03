@@ -26,6 +26,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './auth/auth.guard';
 import { AuthService } from './shared/auth.service';
 import { httpInterceptorProviders } from './http-interceptors/index';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 
 
@@ -43,7 +44,8 @@ import { httpInterceptorProviders } from './http-interceptors/index';
     AvanceComponent,
     NavbarComponent,
     AuthentificationComponent,
-    IdentifiantComponent
+    IdentifiantComponent,
+    UtilisateurComponent
   ],
   imports: [
     BrowserAnimationsModule,

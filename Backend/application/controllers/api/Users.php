@@ -114,6 +114,7 @@ class Users extends \Restserver\Libraries\REST_Controller
             {
                 $return_data = [
                     'user_id' => $output->user_id,
+                    'IsAdmin' => $output->IsAdmin,
                     'token' => $output->Token,
                 ];
                 // Login Success

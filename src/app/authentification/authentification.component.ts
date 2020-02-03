@@ -54,6 +54,7 @@ export class AuthentificationComponent implements OnInit {
 
     this.authService.login(this.username, this.password).subscribe((data) => {
       if (this.authService.isLoggedIn) {
+
          this.router.navigate(['/home']);
        } 
        else{

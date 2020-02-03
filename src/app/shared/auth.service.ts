@@ -10,6 +10,7 @@ import { environment } from '../../environments/environment';
 
 export class AuthService {
 
+
   serverUrl = environment.baseUrl;
   errorData: {};
 
@@ -36,6 +37,7 @@ export class AuthService {
         if (user) {
           localStorage.setItem('currentUser', JSON.stringify(user));
           localStorage.setItem('token', user.data.token);
+          localStorage.setItem('isadmin', user.data.IsAdmin);
           localStorage.setItem('user_id', user.data.user_id);
         }
       }),
@@ -43,9 +45,17 @@ export class AuthService {
     );
   }
 
+  createUtilisateur(form) {
+    return this.http.post<any>(this.serverUrl + 'api/user/register', form)
+    .pipe(
+      catchError(this.handleError)
+    );
+  }
+
   logout() {
     localStorage.removeItem('currentUser');
     localStorage.removeItem('token');
+    localStorage.removeItem('Isadmin');
     localStorage.removeItem('user_id');
     
   }

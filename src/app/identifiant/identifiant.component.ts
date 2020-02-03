@@ -24,6 +24,7 @@ export class IdentifiantComponent implements OnInit {
   }
   user_id:String;
   token:string;
+  
 
   /*constructor */
   constructor(private Identifiantservice:IdentifiantService) { }
@@ -31,6 +32,7 @@ export class IdentifiantComponent implements OnInit {
   /* les fonctionnes */
 
   ngOnInit() {
+
     this.user_id=localStorage.getItem('user_id');
     this.token=localStorage.getItem('token');
     this.Identifiantservice.getIdentifiant(this.user_id,this.token)

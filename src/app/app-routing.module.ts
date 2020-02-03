@@ -10,6 +10,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { CongeComponent } from './conge/conge.component';
 import { AvanceComponent } from './avance/avance.component';
 import { AutorisationComponent } from './autorisation/autorisation.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+
 import { AuthGuard } from './auth/auth.guard';
 
 /*table routage */
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'conge', component: CongeComponent , data: {animation: 'Conge'},canActivate:[AuthGuard] },
   { path: 'avance', component: AvanceComponent , data: {animation: 'Avance'},canActivate:[AuthGuard] },
   { path: 'autorisation', component: AutorisationComponent , data: {animation: 'Autorisation'},canActivate:[AuthGuard] },
+  { path: 'utilisateur', component: UtilisateurComponent , data: {animation: 'Utilisateur'},canActivate:[AuthGuard] },
+
 
 ];
 

@@ -21,9 +21,11 @@
         </li>  
       </ul>
       <ul class="navbar-nav ml-auto">
-      
+          <li  class="nav-item" data-toggle="collapse" data-target=".navbar-collapse.show" *ngIf="nav.IsAdminState">
+            <a class="nav-link " routerLink="./utilisateur"><i class="fa fa-user" style="padding-right:5px"></i>{{IsAdminState}} Utilisateur</a>
+          </li> 
           <li class="nav-item">
-            <a class="nav-link " routerLink="" (click)="logout"><i class="fa fa-sign-out" style="padding-right:10xpx"></i>Se deconnecter</a>
+            <a class="nav-link " routerLink="" (click)="logout"><i class="fa fa-sign-out" style="padding-right:5px"></i>Se deconnecter</a>
           </li>  
         </ul>
     </div> 
