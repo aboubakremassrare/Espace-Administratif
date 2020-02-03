@@ -54,32 +54,32 @@ export class UtilisateurComponent implements OnInit {
     this.NaissanceDate=this.datePipe.transform(this.naissance,"dd-MM-yyyy");
     alert(this.isadmin)
 
-    // const formData = new FormData();
-    // formData.append('Nom', this.nom);
-    // formData.append('Prenom', this.prenom);
-    // formData.append('username', this.username);
-    // formData.append('password',''+this.password);
-    // formData.append('Immatriculation',this.immatriculation);
-    // formData.append('Cin',this.cin);
-    // formData.append('Naissance',this.NaissanceDate);
-    // formData.append('email',this.email);
-    // formData.append('IsAdmin',this.isadmin);
-    // formData.append('token',localStorage.getItem('token')); 
+    const formData = new FormData();
+    formData.append('Nom', this.nom);
+    formData.append('Prenom', this.prenom);
+    formData.append('username', this.username);
+    formData.append('password',''+this.password);
+    formData.append('Immatriculation',this.immatriculation);
+    formData.append('Cin',this.cin);
+    formData.append('Naissance',this.NaissanceDate);
+    formData.append('email',this.email);
+    formData.append('IsAdmin',this.isadmin);
+    formData.append('token',localStorage.getItem('token')); 
 
-    // this.authservice.createUtilisateur(formData).subscribe(
-    //   res => {
-    //     this.success=true;
-    //     this.failed=false;  
+    this.authservice.createUtilisateur(formData).subscribe(
+      res => {
+        this.success=true;
+        this.failed=false;  
        
-    //     this.reset();
-    //   },
-    //   error =>{
-    //     console.log(error);
-    //     this.failed=true;
-    //     this.success=false;
+        this.reset();
+      },
+      error =>{
+        console.log(error);
+        this.failed=true;
+        this.success=false;
      
-    //   } 
-    // );
+      } 
+    );
     //this.reset()
               }
 

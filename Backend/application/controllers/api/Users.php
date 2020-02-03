@@ -29,16 +29,18 @@ class Users extends \Restserver\Libraries\REST_Controller
     public function register_post()
     {
 
-            $formdata = json_decode(file_get_contents('php://input'));
-            $insert_data['username'] = $this->input->post('username');;
-            $insert_data['password'] = md5($this->input->post('password'));
-            $insert_data['Nom'] = $this->input->post('Nom');;
-            $insert_data['Prenom'] = $this->input->post('Prenom');;
-            $insert_data['Immatriculation'] = $this->input->post('Immatriculation');;
-            $insert_data['Cin'] = $this->input->post('Cin');;
-            $insert_data['Naissance'] = $this->input->post('Naissance');;
-            $insert_data['email'] = $this->input->post('email');;
-
+        $formdata = json_decode(file_get_contents('php://input'));
+        $insert_data['username'] = $this->input->post('username');;
+        $insert_data['password'] = md5($this->input->post('password'));
+        $insert_data['Nom'] = $this->input->post('Nom');;
+        $insert_data['Prenom'] = $this->input->post('Prenom');;
+        $insert_data['Immatriculation'] = $this->input->post('Immatriculation');;
+        $insert_data['Cin'] = $this->input->post('Cin');;
+        $insert_data['Naissance'] = $this->input->post('Naissance');;
+        $insert_data['email'] = $this->input->post('email');
+        if($this->input->post('IsAdmin')=='true'){
+        $insert_data['IsADmin'] = 1; 
+        }
 
         $this->form_validation->set_rules('username', 'username', 'trim|required|is_unique[users.username]|alpha_numeric|max_length[20]',
             array('is_unique' => 'This %s already exists please enter another username')
