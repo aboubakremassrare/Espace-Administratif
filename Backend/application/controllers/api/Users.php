@@ -13,6 +13,7 @@ class Users extends \Restserver\Libraries\REST_Controller
 		header("Access-Control-Request-Headers: GET,POST,OPTIONS,DELETE,PUT");
         header('Access-Control-Allow-Headers: Accept,Accept-Language,Content-Language,Content-Type');
         $this->load->model('user_model', 'UserModel');
+        $this->load->model('interime_model', 'InterimeModel');
     }
 
     /**
@@ -32,7 +33,7 @@ class Users extends \Restserver\Libraries\REST_Controller
         $formdata = json_decode(file_get_contents('php://input'));
         $insert_data['username'] = $this->input->post('username');;
         $insert_data['password'] = md5($this->input->post('password'));
-        $insert_data['Nom'] = $this->input->post('Nom');;
+        $insert_data['Nom'] = $this->input->post('Nom');
         $insert_data['Prenom'] = $this->input->post('Prenom');;
         $insert_data['Immatriculation'] = $this->input->post('Immatriculation');;
         $insert_data['Cin'] = $this->input->post('Cin');;
@@ -66,7 +67,14 @@ class Users extends \Restserver\Libraries\REST_Controller
             // Generate Token
             $insert_data['token'] = $this->authorization_token->generateToken($insert_data);
             // Insert User in Database
-            $output = $this->UserModel->insert_user($insert_data);
+            $last_id = $this->UserModel->insert_user($insert_data);
+            $interime = [
+                'user_id' =>$last_id,
+                'Departement_value' => $this->input->post('departement'),
+                'Interime_name' => $this->input->post('Nom').' '.$this->input->post('Prenom'),
+            ];
+            $output=$this->InterimeModel->interime_insert($interime);
+            
             if ($output > 0 AND !empty($output))
             {
                 // Success 200 Code Send

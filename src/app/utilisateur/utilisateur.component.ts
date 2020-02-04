@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
+import { CongeService } from '../shared/conge.service';
+import { Departement } from '../shared/Departement.model';
+
+
 
 @Component({
   selector: 'app-utilisateur',
@@ -13,6 +17,7 @@ export class UtilisateurComponent implements OnInit {
 
   submitted = false;
   registerForm: FormGroup;
+  typeDepartement:string='';
   naissance: Date=new Date(); 
   NaissanceDate:string;
   nom:string;
@@ -25,9 +30,12 @@ export class UtilisateurComponent implements OnInit {
   isadmin:string;
   success: boolean=false;
   failed: boolean=false;
+  token:string;
+  depts: Departement;
+  error: {};
 
 
-  constructor(private datePipe: DatePipe,private formBuilder: FormBuilder,private authservice:AuthService) { }
+  constructor(private Congeservice:CongeService,private datePipe: DatePipe,private formBuilder: FormBuilder,private authservice:AuthService) { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -40,9 +48,22 @@ export class UtilisateurComponent implements OnInit {
       naissance: ['', Validators.required],
       email: ['', Validators.required],
       isadmin:[''],
-   
+      departement: ['', Validators.required],
                                             });
+         
+      this.recupererdata();
   }
+
+    /* recuperer les departement et les interimes */
+    recupererdata(){
+      this.token=localStorage.getItem('token');
+      this.Congeservice.getDepartements(this.token).subscribe(
+        (Response: Departement) => this.depts=Response.data,
+        error => this.error = error
+      );
+    
+  
+    }
 
   get f() { return this.registerForm.controls; }
 
@@ -52,7 +73,6 @@ export class UtilisateurComponent implements OnInit {
         return;
     }
     this.NaissanceDate=this.datePipe.transform(this.naissance,"dd-MM-yyyy");
-    alert(this.isadmin)
 
     const formData = new FormData();
     formData.append('Nom', this.nom);
@@ -64,13 +84,13 @@ export class UtilisateurComponent implements OnInit {
     formData.append('Naissance',this.NaissanceDate);
     formData.append('email',this.email);
     formData.append('IsAdmin',this.isadmin);
+    formData.append('departement', this.typeDepartement);
     formData.append('token',localStorage.getItem('token')); 
 
     this.authservice.createUtilisateur(formData).subscribe(
       res => {
         this.success=true;
         this.failed=false;  
-       
         this.reset();
       },
       error =>{
@@ -85,7 +105,14 @@ export class UtilisateurComponent implements OnInit {
 
     //function reset
     reset(){
-      this.registerForm.reset();
+     this.nom='';
+     this.prenom='';
+     this.username='';
+     this.password='';
+     this.immatriculation='';
+     this.cin='';
+     this.email='';
+     this.typeDepartement=''
     }
 
 }

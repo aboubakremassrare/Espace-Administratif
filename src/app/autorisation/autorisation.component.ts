@@ -7,6 +7,7 @@ import { DemandeService } from '../shared/demande.service';
 
 
 
+
 @Component({
   selector: 'app-autorisation',
   templateUrl: './autorisation.component.html',
@@ -39,6 +40,7 @@ export class AutorisationComponent implements OnInit {
    /* Functions */
 
   ngOnInit() {
+
     this.registerForm = this.formBuilder.group({
       motif: ['', Validators.required],
       mytime: ['', Validators.required],

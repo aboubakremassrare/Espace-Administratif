@@ -5,7 +5,7 @@ class Interime_Model extends CI_Model
     protected $interime_table = 'interimes';
 
     /**
-     * Departement liste
+     * Interime liste
      * ----------------------------------
      */
     public function interime_data()
@@ -14,6 +14,18 @@ class Interime_Model extends CI_Model
         $departement= $this->db->get($this->interime_table);
         return $departement->result();
       
+    }
+
+
+    
+    /**
+     * Interime insert
+     * ----------------------------------
+     */
+
+    public function interime_insert(array $data) {
+        $this->db->insert('interimes', $data);
+        return $this->db->insert_id();
     }
 
 

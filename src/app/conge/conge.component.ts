@@ -64,7 +64,7 @@ export class CongeComponent implements OnInit {
     );
     this.Congeservice.getInterimes(this.token).subscribe(
       (Response: Interime) => this.Interimes=Response.data.filter(
-        Interim => Interim.id != localStorage.getItem('user_id')),
+        Interim => Interim.user_id != localStorage.getItem('user_id')),
       error => this.error = error
     );
 
@@ -126,6 +126,7 @@ export class CongeComponent implements OnInit {
           this.disabled=false;
           this.panelVisible= false;
           this.panelVisibleDate= false;
+          this.typeDepartement=''
        
         },
         error =>{
