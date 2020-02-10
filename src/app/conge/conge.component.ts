@@ -126,7 +126,6 @@ export class CongeComponent implements OnInit {
           this.disabled=false;
           this.panelVisible= false;
           this.panelVisibleDate= false;
-          this.typeDepartement=''
        
         },
         error =>{

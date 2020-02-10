@@ -18,7 +18,7 @@ export class UtilisateurComponent implements OnInit {
   submitted = false;
   registerForm: FormGroup;
   typeDepartement:string='';
-  naissance: Date=new Date(); 
+  naissance: Date; 
   NaissanceDate:string;
   nom:string;
   prenom:string;

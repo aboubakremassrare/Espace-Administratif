@@ -121,7 +121,7 @@
                 <input
                 type="text"
                 class="form-control"
-                placeholder="Naissance"
+                placeholder="Date de Naissance"
                 [ngClass]="{ 'is-invalid': submitted && f.naissance.errors }" 
                 formControlName="naissance" 
                 [(ngModel)]="naissance" 
@@ -170,12 +170,12 @@
 
             <div class="form-group">
               <div class="form-check">
-                <label class="form-check-label">
+                <label class="form-check-label"  style="color:blue">
                   <input type="checkbox" 
                   class="form-check-input" 
                   formControlName="isadmin" 
                    [(ngModel)]="isadmin" >
-                   Is Admin
+                   Est ce que c'est un compte adminitratif ?
                 </label>
               </div>
             </div>
