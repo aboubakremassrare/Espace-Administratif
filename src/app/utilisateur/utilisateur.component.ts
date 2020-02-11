@@ -35,7 +35,8 @@ export class UtilisateurComponent implements OnInit {
   error: {};
 
 
-  constructor(private Congeservice:CongeService,private datePipe: DatePipe,private formBuilder: FormBuilder,private authservice:AuthService) { }
+  constructor(private Congeservice:CongeService,private datePipe: DatePipe,private formBuilder: FormBuilder,private authservice:AuthService) 
+  { }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -100,7 +101,6 @@ export class UtilisateurComponent implements OnInit {
      
       } 
     );
-    //this.reset()
               }
 
     //function reset
