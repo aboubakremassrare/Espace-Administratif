@@ -41,9 +41,10 @@ box-sizing: border-box;
 @media (max-width: 700px) {
 
   .block-body{
-      width: 90%;
+      width: 100%;
       font-size: 12px;
       padding: 20px 20px;
+      margin-top: 0px;
 
   }
   
