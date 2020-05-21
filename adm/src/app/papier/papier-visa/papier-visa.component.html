@@ -1,0 +1,74 @@
+<div class="global" >
+    <div class="gap"></div>
+    <div class="container">
+    <ol  class="breadcrumb non-rtl-children" 
+    style="background-color: inherit;padding: 0px;">
+    <li  class="breadcrumb-item-shap">
+        <a  class="text-dark" routerLink="../../home">Accueil</a>
+    </li>
+    <li  class="breadcrumb-item-shap">
+        <a  class="text-dark" routerLink="../../papier">Papier</a>
+    </li>
+    <li class="breadcrumb-item active" style="color: #0090d9;">
+        <strong >Papier De Visa</strong></li>
+    </ol>
+    </div>
+<app-identifiant></app-identifiant>
+    <div class=" container block-body">
+       <div class="card " style="background-color: white;">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="card-header" >
+                                <h5>Papier de Visa </h5>
+                                </div>
+                                <div class="card-body text-center">
+                                <h5 class="card-title">Attestation de conge :</h5>
+                                <br>
+                                <div  *ngFor="let check of checks">
+                                <!-- create a radio button-->
+                                <input
+                                type="radio"
+                                name="trueorfalse"
+                                value="{{check}}"
+                                (change)="radioChangeHandler($event)" checked>
+                                <i>{{check}}</i>
+                                </div>
+                                <br>
+                                <div *ngIf="panelVisible" style="margin-top: 20px;">
+                                <div class="row">
+                                <div class="col-xs-12 col-12 col-md-6 form-group">
+                                <label><b>Date de debut</b></label>
+                                <input style="text-align: center;" type="text"
+                                placeholder="Debut"
+                                [(ngModel)]="mytimestart"
+                                useValueAsDate
+                                formControlName="mytimestart" 
+                                [ngClass]="{ 'is-invalid': submitted && f.mytimestart.errors }" 
+                                class="form-control"
+                                bsDatepicker>
+                                </div>
+                                <div class="col-xs-12 col-12 col-md-6 form-group">
+                                <label><b>Date de fin</b></label>
+                                <input style="text-align: center;" type="text"
+                                placeholder="Fin"
+                                [(ngModel)]="mytimeend"
+                                useValueAsDate
+                                formControlName="mytimeend" 
+                                [ngClass]="{ 'is-invalid': submitted && (f.mytimeend.errors||registerForm.errors) }"
+                                class="form-control"
+                                bsDatepicker>
+                                <div *ngIf="registerForm.errors" class="invalid-feedback">
+                                Date de fin must be greater then Date de debut
+                                </div>   
+                                </div>
+                                </div>
+                                </div>
+                                <div class="spinner-block">
+                                <button class="btn btn-valider" ><b>Valider</b></button>
+                               </div>
+                                </div>
+            </form>           
+        </div>
+    </div>
+</div>
+             
+           

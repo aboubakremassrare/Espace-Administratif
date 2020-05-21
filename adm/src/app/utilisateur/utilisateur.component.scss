@@ -1,0 +1,26 @@
+.container-register{
+    margin-top: 60px;
+}
+.label-style{
+    background: #1d4584;
+    width: 100%;
+    height: 80px;
+    padding-top: 25px;
+    color: white;
+  }
+  form{
+    margin-bottom: 20px;
+  }
+  .btn-valider{
+    width: 100%;
+    height: 50px;
+    border-radius: 0px;
+  }
+
+
+  @media (max-width: 1280px) {
+    .container-register{
+        margin-top: 30px;
+    }
+    
+  }

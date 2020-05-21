@@ -1,0 +1,50 @@
+
+.block-body{
+  margin-top: 60px;
+  padding: 15px;
+  color:black;
+ 
+}
+
+.timerMeridian{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.btn-valider{
+  background: #1d4584;;
+   text-align: center;
+   height:40px;
+   color: white;
+
+   &:hover, &.active{
+      background: #86fcff;
+      color: #333;
+}
+}
+.bs-datepicker-head{
+  background: blue;
+}
+
+input[type=text], select {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+border-radius: 4px;
+box-sizing: border-box;
+}
+
+@media (max-width: 700px) {
+
+  .block-body{
+      width: 100%;
+      font-size: 12px;
+      padding: 20px 20px;
+      margin-top: 0px;
+
+  }
+  
+}

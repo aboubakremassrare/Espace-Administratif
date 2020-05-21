@@ -1,0 +1,59 @@
+<div class="global">
+    <div class="container">
+      <div class="gap"></div>
+      <ol  class="breadcrumb non-rtl-children" 
+      style="background-color: inherit;padding: 0px;">
+      <li  class="breadcrumb-item-shap">
+          <a  class="text-dark" routerLink="../home">Accueil</a>
+      </li>
+      <li class="breadcrumb-item active" style="color: #0090d9;">
+          <strong >Avance</strong>
+      </li>
+      </ol>
+    </div>  
+    <app-identifiant></app-identifiant>
+        <div class=" container block-body">
+                <div class="card " style="background-color: white;">
+                    <div *ngIf="success" class="alert alert-success" role="alert">
+                        Demande Avance send avec success!
+                    </div>
+                    <div *ngIf="failed" class="alert alert-danger" role="alert">
+                        Demande Avance failed!
+                    </div>
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                                <div class="card-header" >
+                                <h5>Avance de Salaire  </h5>
+                                </div>
+                                <div class="card-body text-center">
+                                <h5 class="card-title"><i class="fa fa-money" style="padding-right:5px"></i>Le Montant En DH:</h5>
+                                 <br>
+                                 <div class="card-avance">  
+                                    <input  type="number"
+                                    formControlName="avance" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.avance.errors }" 
+                                    style="text-align: center;"
+                                    placeholder=""
+                                    [(ngModel)]="avance"
+                                    class="form-control"
+                                    >
+                                        <div *ngIf="submitted && f.avance.errors" class="invalid-feedback">
+                                            <div *ngIf="f.avance.errors.required">Avance  is required</div>
+                                            <div *ngIf="f.avance.errors.min">Avance must be greater then 0</div>
+                                        </div>
+                                 </div>
+                                 <div class="spinner-block">
+                                    <button class="btn btn-valider" [disabled]="disabled" >
+                                        <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <b>Valider</b>
+                                    </button>
+                                </div>
+                                </div>
+                    </form>
+                             
+                </div> 
+       </div>
+</div>
+             
+           

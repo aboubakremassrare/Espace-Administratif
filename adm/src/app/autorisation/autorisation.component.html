@@ -1,0 +1,95 @@
+<div class="global">
+    <div class="container">
+      <div class="gap"></div>
+      <ol  class="breadcrumb non-rtl-children" 
+      style="background-color: inherit;padding: 0px;">
+      <li  class="breadcrumb-item-shap">
+          <a  class="text-dark" routerLink="../home">Accueil</a>
+      </li>
+      <li class="breadcrumb-item active" style="color: #0090d9;">
+          <strong >Autorisation</strong>
+      </li>
+      </ol>
+</div>
+    <app-identifiant></app-identifiant>
+        <div class=" container block-body">        
+            <div class="card " style="background-color: white;">
+                <div *ngIf="success" class="alert alert-success" role="alert">
+                    Demande Autorisation send avec success!
+                </div>
+                <div *ngIf="failed" class="alert alert-danger" role="alert">
+                    Demande Autorisation failed!
+                </div>
+                 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                                <div class="card-header" >
+                                <h5>Autorisation de sortie </h5>
+                                </div>
+                                <div class="card-body text-center">
+                                <h5 class="card-title"><i class="fa fa-calendar" style="padding-right:5px"></i>Date et Heure de sortie:</h5>
+                                <br>
+                                  <div class="">  
+                                    <label ><b>Le jour</b></label>
+                                    <input style="text-align: center;" type="text"
+                                        placeholder="jour"
+                                        [(ngModel)]="mytime"
+                                        formControlName="mytime" 
+                                        [ngClass]="{ 'is-invalid': submitted && f.mytime.errors }" 
+                                        class="form-control"
+                                        bsDatepicker 
+                                    >
+                                        <div *ngIf="submitted && f.mytime.errors" class="invalid-feedback">
+                                            <div *ngIf="f.mytime.errors.required">Jour  is required</div>
+                                        </div>
+                                 </div>
+                                 <br>
+                                 <div class="row ">
+                                    <div class="col-xs-6 col-6 col-md-6 form-group">
+                                        <label class="label-style" ><b>DE</b></label>
+                                        <timepicker class="timerMeridian" 
+                                         [(ngModel)]="mytimestart"
+                                         formControlName="mytimestart" 
+                                         [ngClass]="{ 'is-invalid': submitted && f.mytimestart.errors }" 
+                                          [showMeridian]="isMeridian">
+                                        </timepicker>
+                                    </div>
+                                    <div class="col-xs-6 col-6 col-md-6 form-group" style="width: 100%;">
+                                        <label class="label-style"><b>A</b></label>
+                                        <timepicker class="timerMeridian"
+                                         [(ngModel)]="mytimeend" 
+                                         formControlName="mytimeend" 
+                                         [ngClass]="{ 'is-invalid': submitted && f.mytimeend.errors }" 
+                                         [showMeridian]="isMeridian">
+                                        </timepicker>
+                                    </div>
+                                 </div>
+                                 <br>
+                                 <div class="card-motif">  
+                                    <label ><b>Motif :</b></label>
+                                    <input  type="text"
+                                    formControlName="motif" 
+                                    [ngClass]="{ 'is-invalid': submitted && f.motif.errors }" 
+                                    placeholder=""
+                                    [(ngModel)]="motif"
+                                    class="form-control"
+                                     >   
+                                        <div *ngIf="submitted && f.motif.errors" class="invalid-feedback">
+                                            <div *ngIf="f.motif.errors.required">Motif  is required</div>
+                                        </div>
+                                 </div>
+                                 <br>
+                                 <div class="spinner-block">
+                                    <button class="btn btn-valider" [disabled]="disabled" >
+                                        <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
+                                            <span class="sr-only">Loading...</span>
+                                        </div>
+                                        <b>Valider</b>
+                                    </button>
+                                </div>
+                                </div>
+               </form>          
+        </div>
+    </div>
+</div>
+             
+           
