@@ -154,7 +154,7 @@
                 [(ngModel)]="typeDepartement" 
                 formControlName="departement" 
                 [ngClass]="{ 'is-invalid': submitted && f.departement.errors }" 
-                (ngModelChange)="updateSelectedValue($event)" 
+             
                 class="form-control ng-pristine ng-valid ng-touched" 
                 style="min-width: 200px;" 
                 name="attestation-salaire">
@@ -180,8 +180,8 @@
               </div>
             </div>
             <div class="spinner-block">
-              <button class="btn btn-valider" [disabled]="disabled" >
-                  <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
+              <button class="btn btn-valider"  >
+                  <div class="spinner-grow text-info" role="status" style="margin-right: 10px;"  >
                       <span class="sr-only">Loading...</span>
                   </div>
                   <b>Valider</b>
