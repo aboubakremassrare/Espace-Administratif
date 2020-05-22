@@ -4,7 +4,7 @@ import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Departement } from './departement.model';
-import { Interime } from './Interime.model';
+import { Interime } from './interime.model';
 
 @Injectable({
   providedIn: 'root'
