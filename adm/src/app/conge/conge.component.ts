@@ -3,8 +3,8 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DemandeService } from '../shared/demande.service';
 import { CongeService } from '../shared/conge.service';
-import { Departement } from '../shared/Departement.model';
-import { Interime } from '../shared/Interime.model';
+import { Departement } from '../shared/departement.model';
+import { Interime } from '../shared/interime.model';
 import * as jsPDF from 'jspdf'
 
 
