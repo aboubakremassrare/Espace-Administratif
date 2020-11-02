@@ -3,8 +3,8 @@ import { HttpClient,HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { Departement } from './Departement.model';
-import { Interime } from './Interime.model';
+import { Departement } from '../model/departement.model';
+import { Interime } from '../model/interime.model';
 
 @Injectable({
   providedIn: 'root'
@@ -16,13 +16,13 @@ export class CongeService {
   constructor(private http: HttpClient) { }
 
   getDepartements(token:string) {
-    return this.http.post<Departement>(this.serverUrl + 'api/departement/departements',{token:token}).pipe(
+    return this.http.post<Departement>(this.serverUrl + 'api/departement/departements',{token}).pipe(
       catchError(this.handleError)
     );
   }
   
   getInterimes(token:string) {
-    return this.http.post<Interime>(this.serverUrl + 'api/interime/interimes',{token:token}).pipe(
+    return this.http.post<Interime>(this.serverUrl + 'api/interime/interimes',{token}).pipe(
       catchError(this.handleError)
     );
   }

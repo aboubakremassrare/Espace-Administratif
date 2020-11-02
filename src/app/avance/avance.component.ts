@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DemandeService } from '../shared/demande.service';
 
 
-
 @Component({
   selector: 'app-avance',
   templateUrl: './avance.component.html',
@@ -22,7 +21,7 @@ export class AvanceComponent implements OnInit {
 
   /*constructor */
 
-  constructor(private formBuilder: FormBuilder,private demandeservice:DemandeService,) { }
+  constructor(private formBuilder: FormBuilder,private demandeservice:DemandeService) { }
 
  /*function */
 

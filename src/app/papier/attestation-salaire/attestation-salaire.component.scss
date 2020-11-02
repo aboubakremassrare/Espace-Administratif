@@ -13,6 +13,19 @@
   align-items: center;
 }
 
+.btn-valider{
+  background: #1d4584;;
+   text-align: center;
+   height:40px;
+   color: white;
+
+   &:hover, &.active{
+      background: #86fcff;
+      color: #333;
+}
+}
+
+
 
 
 

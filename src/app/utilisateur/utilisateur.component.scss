@@ -11,16 +11,39 @@
   form{
     margin-bottom: 20px;
   }
+
+  .form-control{
+    height: calc(3em + .75rem + 2px);
+
+  }
+
+  .spinner-block{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+  
   .btn-valider{
-    width: 100%;
-    height: 50px;
-    border-radius: 0px;
+    background: #1d4584;;
+     text-align: center;
+     height:80px;
+     width: 100%;
+     color: white;
+  
+     &:hover, &.active{
+        background: #86fcff;
+        color: #333;
+  }
   }
 
 
   @media (max-width: 1280px) {
     .container-register{
         margin-top: 30px;
+    }
+    .form-control{
+      height: calc(1.5em + .75rem + 2px);
     }
     
   }

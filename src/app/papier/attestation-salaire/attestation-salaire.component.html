@@ -23,7 +23,7 @@
             <div *ngIf="failed" class="alert alert-danger" role="alert">
                 Demande Attestation failed!
             </div>
-           <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                     <div class="card-header" >
                     <h5>Edition des attestations </h5>
                     </div>
@@ -46,12 +46,10 @@
                     </div>
                     <br>
                     <div class="spinner-block">
-                    <button class="btn btn-valider" [disabled]="disabled" >
-                        <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
-                            <span class="sr-only">Loading...</span>
-                        </div>
-                        <b>Valider</b>
-                    </button>
+                        <button class="btn btn-valider" [disabled]="disabled">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="disabled"></span>
+                            Valider
+                        </button>
                     </div>
 
 

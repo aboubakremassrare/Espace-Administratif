@@ -190,7 +190,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
                 $isValidToken = $this->UserModel->checkToken($this->input->post('token'));
                 /* Si le token est valide */
                 if($isValidToken) {
-                    $to = 'aboubakremassrare@gmail.com'; 
+                    $to = 'swiglasmassrare@gmail.com'; 
                     $from = 'sender@example.com'; 
                     $fromName = 'Aboubakre'; 
                     $subject = $this->input->post('sujet'); 

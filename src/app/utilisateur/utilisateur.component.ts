@@ -3,7 +3,7 @@ import { DatePipe } from '@angular/common';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../shared/auth.service';
 import { CongeService } from '../shared/conge.service';
-import { Departement } from '../shared/Departement.model';
+import { Departement } from '../model/Departement.model';
 
 
 

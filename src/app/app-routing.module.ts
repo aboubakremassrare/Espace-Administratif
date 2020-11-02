@@ -22,15 +22,48 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: '/login' },
   { path: 'login', component: AuthentificationComponent, data: {animation: 'Login'}  },
   { path: 'home', component: HomeComponent , data: {animation: 'Home'},canActivate:[AuthGuard] },
-  { path: 'papier', component: PapierComponent , data: {animation: 'Papier'},canActivate:[AuthGuard] },
-  { path: 'papier/attestation-salaire', component: AttestationSalaireComponent , data: {animation: 'Attestation-salaire'},canActivate:[AuthGuard] },
-  { path: 'papier/attestation-travail', component: AttestationTravailComponent , data: {animation: 'Attestation-travail'},canActivate:[AuthGuard] },
-  { path: 'papier/domiciliation-salaire', component: DomiciliationSalaireComponent , data: {animation: 'Domiciliation-salaire'},canActivate:[AuthGuard] },
-  { path: 'papier/papier-visa', component: PapierVisaComponent , data: {animation: 'Papier-visa'},canActivate:[AuthGuard] },
+  { path: 'papier', canActivate:[AuthGuard], 
+  children: [
+    {
+      path: '',
+      component: PapierComponent,
+      data: {animation: 'Papier'}
+    },
+    {
+      path: 'attestation-salaire',
+      component: AttestationSalaireComponent,
+      data: {animation: 'Attestation-salaire'}
+    },
+    {
+    path: 'attestation-travail',
+    component: AttestationTravailComponent , 
+    data: {animation: 'Attestation-travail'}
+    },
+    { 
+    path: 'domiciliation-salaire',
+    component: DomiciliationSalaireComponent ,
+    data: {animation: 'Domiciliation-salaire'}
+    },
+    { 
+      path: 'papier/papier-visa', 
+      component: PapierVisaComponent, 
+      data: {animation: 'Papier-visa'}
+    }
+
+
+
+  ]
+},
+  // { path: 'papier', component: PapierComponent , data: {animation: 'Papier'},canActivate:[AuthGuard] },
+  // { path: 'papier/attestation-salaire', component: AttestationSalaireComponent , data: {animation: 'Attestation-salaire'},canActivate:[AuthGuard] },
+  // { path: 'papier/attestation-travail', component: AttestationTravailComponent , data: {animation: 'Attestation-travail'},canActivate:[AuthGuard] },
+  // { path: 'papier/domiciliation-salaire', component: DomiciliationSalaireComponent , data: {animation: 'Domiciliation-salaire'},canActivate:[AuthGuard] },
+  // { path: 'papier/papier-visa', component: PapierVisaComponent , data: {animation: 'Papier-visa'},canActivate:[AuthGuard] },
   { path: 'conge', component: CongeComponent , data: {animation: 'Conge'},canActivate:[AuthGuard] },
   { path: 'avance', component: AvanceComponent , data: {animation: 'Avance'},canActivate:[AuthGuard] },
   { path: 'autorisation', component: AutorisationComponent , data: {animation: 'Autorisation'},canActivate:[AuthGuard] },
   { path: 'utilisateur', component: UtilisateurComponent , data: {animation: 'Utilisateur'},canActivate:[RoleGuard] },
+  
 ];
 
 @NgModule({

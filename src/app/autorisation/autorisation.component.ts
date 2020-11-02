@@ -4,10 +4,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { DemandeService } from '../shared/demande.service';
 
 
-
-
-
-
 @Component({
   selector: 'app-autorisation',
   templateUrl: './autorisation.component.html',

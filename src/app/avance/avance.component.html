@@ -10,7 +10,7 @@
           <strong >Avance</strong>
       </li>
       </ol>
-</div>
+    </div>  
     <app-identifiant></app-identifiant>
         <div class=" container block-body">
                 <div class="card " style="background-color: white;">
@@ -28,7 +28,6 @@
                                 <h5 class="card-title"><i class="fa fa-money" style="padding-right:5px"></i>Le Montant En DH:</h5>
                                  <br>
                                  <div class="card-avance">  
-                                    <!-- <label><b>Motif :</b></label> -->
                                     <input  type="number"
                                     formControlName="avance" 
                                     [ngClass]="{ 'is-invalid': submitted && f.avance.errors }" 
@@ -43,11 +42,9 @@
                                         </div>
                                  </div>
                                  <div class="spinner-block">
-                                    <button class="btn btn-valider" [disabled]="disabled" >
-                                        <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                        <b>Valider</b>
+                                    <button class="btn btn-valider" [disabled]="disabled">
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="disabled"></span>
+                                        Valider
                                     </button>
                                 </div>
                                 </div>

@@ -37,6 +37,7 @@
                                         [ngClass]="{ 'is-invalid': submitted && f.mytime.errors }" 
                                         class="form-control"
                                         bsDatepicker 
+                                        readonly
                                     >
                                         <div *ngIf="submitted && f.mytime.errors" class="invalid-feedback">
                                             <div *ngIf="f.mytime.errors.required">Jour  is required</div>
@@ -50,7 +51,7 @@
                                          [(ngModel)]="mytimestart"
                                          formControlName="mytimestart" 
                                          [ngClass]="{ 'is-invalid': submitted && f.mytimestart.errors }" 
-                                          [showMeridian]="isMeridian">
+                                         [showMeridian]="isMeridian">
                                         </timepicker>
                                     </div>
                                     <div class="col-xs-6 col-6 col-md-6 form-group" style="width: 100%;">
@@ -79,13 +80,11 @@
                                  </div>
                                  <br>
                                  <div class="spinner-block">
-                                    <button class="btn btn-valider" [disabled]="disabled" >
-                                        <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                        <b>Valider</b>
+                                    <button class="btn btn-valider" [disabled]="disabled">
+                                        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="disabled"></span>
+                                        Valider
                                     </button>
-                                </div>
+                                 </div>
                                 </div>
                </form>          
         </div>

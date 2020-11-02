@@ -60,4 +60,42 @@ class Interimes extends \Restserver\Libraries\REST_Controller
     }
 
 
+    // public function interimes_get()
+    // {
+    //     $token = str_replace(array("Bearer", " "), "", $this->input->request_headers()['Authorization']);
+
+    //     $isValidToken = $this->UserModel->checkToken($token);
+    //     if($isValidToken) {
+    //         // Load User data Function
+    //         $output = $this->InterimeModel->interime_data();
+    //         if (!empty($output) AND $output != FALSE)
+    //         {
+    //             //  Success
+    //             $message = [
+    //                 'status' => true,
+    //                 'data' => $output,
+    //                 'message' => " data successful"
+    //             ];
+    //             $this->response($message, REST_Controller::HTTP_OK);
+    //         }else{
+    //             //  Error
+    //             $message = [
+    //                 'status' => FALSE,
+    //                 'message' => "Invalid Informations"
+    //             ];
+    //             $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+    //         }
+    //     }//end isvalid token
+    //     else{
+    //         $message = [
+    //             'status' => FALSE,
+    //             'message' => "Invalid Token"
+    //         ];
+    //         $this->response($message, REST_Controller::HTTP_NOT_FOUND);
+    //     }
+
+        
+    // }
+
+
 }

@@ -80,7 +80,9 @@
                                     [ngClass]="{ 'is-invalid': submitted && f.mytimestart.errors }" 
                                     [(ngModel)]="mytimestart"
                                     class="form-control"
-                                    bsDatepicker>
+                                    bsDatepicker
+                                    readonly
+                                    >
                                     </div>
                                     <div class="col-xs-12 col-12 col-md-6 form-group">
                                     <label><b>Date de fin</b></label>
@@ -91,7 +93,9 @@
                                     useValueAsDate
                                     [(ngModel)]="mytimeend"
                                     class="form-control"
-                                    bsDatepicker>
+                                    bsDatepicker
+                                    readonly
+                                    >
                                     <div *ngIf="registerForm.errors" class="invalid-feedback">
                                         Date de fin must be greater then Date de debut
                                     </div>
@@ -99,11 +103,9 @@
                                     </div>
                                     </div>
                                     <div class="spinner-block">
-                                        <button class="btn btn-valider" [disabled]="disabled" >
-                                            <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
-                                                <span class="sr-only">Loading...</span>
-                                            </div>
-                                            <b>Valider</b>
+                                        <button class="btn btn-valider" [disabled]="disabled">
+                                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="disabled"></span>
+                                            Valider
                                         </button>
                                     </div>
                                     </div>

@@ -44,11 +44,9 @@
                     </div>
                     <br>
                     <div class="spinner-block">
-                        <button class="btn btn-valider" [disabled]="disabled" >
-                            <div class="spinner-grow text-info" role="status" style="margin-right: 10px;" *ngIf="disabled" >
-                                <span class="sr-only">Loading...</span>
-                            </div>
-                            <b>Valider</b>
+                        <button class="btn btn-valider" [disabled]="disabled">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true" *ngIf="disabled"></span>
+                            Valider
                         </button>
                     </div>
                     </div>
