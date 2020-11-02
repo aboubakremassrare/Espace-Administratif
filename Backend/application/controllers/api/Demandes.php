@@ -18,9 +18,6 @@ class Demandes extends \Restserver\Libraries\REST_Controller
         $this->load->model('departement_model', 'DepartementModel');
         $this->load->model('interime_model', 'InterimeModel');
         $this->load->model('conge_model', 'CongeModel');
-
-
-
     }
 
         /**
@@ -126,9 +123,7 @@ class Demandes extends \Restserver\Libraries\REST_Controller
         }
     }
 
-
-        
-            /**
+    /**
      * Conge Data API
      * --------------------
      * @param: user_id departement interime date
