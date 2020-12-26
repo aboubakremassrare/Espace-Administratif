@@ -45,5 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 tsconfig.json
+tsconfig.app.json
 
 
